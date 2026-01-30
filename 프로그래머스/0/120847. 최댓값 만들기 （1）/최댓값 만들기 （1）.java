@@ -11,3 +11,5 @@ class Solution {
         return last1 * last2;
     }
 }
+// 배열의 Arrays.sort()
+// '정렬'의 다양한 활용
