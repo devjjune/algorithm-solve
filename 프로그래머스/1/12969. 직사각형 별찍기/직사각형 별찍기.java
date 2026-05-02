@@ -6,10 +6,13 @@ class Solution {
         int n = sc.nextInt();
         int m = sc.nextInt();
         
+        StringBuilder sb = new StringBuilder();
         String row = "*".repeat(n);
         
         for (int i = 0; i < m; i++) {
-            System.out.println(row);
+            sb.append(row).append("\n");
         }
+        
+        System.out.println(sb.toString());
     }
 }
