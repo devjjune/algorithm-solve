@@ -10,6 +10,6 @@ class Solution {
             set.add(i);
         }
         
-        return (set.size() >= num) ? num : set.size();
+        return Math.min(num, set.size());
     }
 }
