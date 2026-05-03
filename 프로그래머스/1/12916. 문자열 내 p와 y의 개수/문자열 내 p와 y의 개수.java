@@ -14,10 +14,6 @@ class Solution {
             }
         }
         
-        if (p == y) {
-            return true;
-        } else {
-            return false;
-        }
+        return p == y;
     }
 }
