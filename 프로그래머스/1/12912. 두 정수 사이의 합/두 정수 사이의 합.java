@@ -1,14 +1,9 @@
 class Solution {
     public long solution(int a, int b) {
         
-        long sum = 0;
-        int min = Math.min(a, b);
-        int max = Math.max(a, b);
+        long min = Math.min(a, b);
+        long max = Math.max(a, b);
         
-        for (int i = min; i <= max; i++) {
-            sum += i;
-        }
-        
-        return sum;
+        return (min + max) * (max - min + 1) / 2;
     }
 }
