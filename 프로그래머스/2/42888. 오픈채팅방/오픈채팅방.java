@@ -20,9 +20,7 @@ class Solution {
             
             if (tokens[0].equals("Enter")) {
                 result.add(lastNickName.get(uid) + "님이 들어왔습니다.");
-            }
-            
-            if (tokens[0].equals("Leave")) {
+            } else if (tokens[0].equals("Leave")) {
                 result.add(lastNickName.get(uid) + "님이 나갔습니다.");
             }
         }
