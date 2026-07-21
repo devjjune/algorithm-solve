@@ -3,13 +3,12 @@ import java.util.*;
 class Solution {
     public int solution(int[] nums) {
         
-        int num = nums.length/2;
-        Set<Integer> set = new HashSet<>();
+        Set<Integer> animals = new HashSet<>();
         
-        for (int i : nums) {
-            set.add(i);
+        for (int num : nums) {
+            animals.add(num);
         }
         
-        return Math.min(num, set.size());
+        return Math.min(animals.size(), nums.length / 2);
     }
 }
