@@ -3,19 +3,25 @@ import java.util.*;
 class Solution {
     public int solution(String[][] clothes) {
         
-        Map<String, Integer> map = new HashMap<>();
+        Map<String, Integer> clothesCount = new HashMap<>();
         
         for (String[] cloth : clothes) {
-            String type = cloth[1];
-            map.put(type, map.getOrDefault(type, 0) + 1);
+            String category = cloth[1];
+            
+            if (clothesCount.containsKey(category)) {
+                int current = clothesCount.get(category);
+                clothesCount.put(category, current + 1);
+            } else {
+                clothesCount.put(category, 1);
+            }
         }
         
-        int answer = 1;
+        int result = 1;
         
-        for (int count : map.values()) {
-            answer *= (count + 1);
+        for (String category : clothesCount.keySet()) {
+            result *= (clothesCount.get(category) + 1);
         }
         
-        return answer - 1;
+        return result - 1;
     }
 }
