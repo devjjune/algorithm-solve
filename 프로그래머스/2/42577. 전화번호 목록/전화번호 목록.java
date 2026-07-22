@@ -4,7 +4,6 @@ class Solution {
     public boolean solution(String[] phone_book) {
         
         Set<String> phoneNums = new HashSet<>();
-        boolean result = true;
         
         for (String phoneNum : phone_book) {
             phoneNums.add(phoneNum);
@@ -15,11 +14,10 @@ class Solution {
                 String prefix = phoneNum.substring(0, i);
                 
                 if (phoneNums.contains(prefix)) {
-                    result = false;
+                    return false;
                 }
             }
         }
-        
-        return result;
+        return true;
     }
 }
