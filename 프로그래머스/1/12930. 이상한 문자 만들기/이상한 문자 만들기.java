@@ -2,21 +2,21 @@ class Solution {
     public String solution(String s) {
         
         String[] words = s.split(" ", -1);
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         
-        for (int i = 0; i < words.length; i++) {
-            for (int j = 0; j < words[i].length(); j++) {
-                if (j % 2 == 0) {
-                    stringBuilder.append(Character.toUpperCase(words[i].charAt(j)));
+        for (String word : words) {
+            for (int i = 0; i < word.length(); i++) {
+                if (i % 2 == 0) {
+                    sb.append(Character.toUpperCase(word.charAt(i)));
                 } else {
-                    stringBuilder.append(Character.toLowerCase(words[i].charAt(j)));
+                    sb.append(Character.toLowerCase(word.charAt(i)));
                 }
             }
-            
-            if (i < words.length - 1) {
-                stringBuilder.append(" ");
-            }
+            sb.append(" ");
         }
-        return stringBuilder.toString();
+        
+        sb.deleteCharAt(sb.length() -1);
+        
+        return sb.toString();
     }
 }
