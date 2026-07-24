@@ -1,24 +1,44 @@
 class Solution {
     public String solution(String new_id) {
         
-        String result = new_id.toLowerCase();
-        result = result.replaceAll("[^a-z0-9\\-_.]", "");
-        result = result.replaceAll("\\.{2,}", ".");
-        result = result.replaceAll("^\\.|\\.$", "");
+        String id = new_id.toLowerCase();
         
-        if (result.isEmpty()) {
-            result = "a";
+        StringBuilder sb = new StringBuilder();
+        
+        for (char c : id.toCharArray()) {
+            if (Character.isLowerCase(c) || Character.isDigit(c) || c == '-' || c == '_' || c == '.') {
+                if (c == '.' && sb.length() > 0 && sb.charAt(sb.length() - 1) == '.') {
+                    continue;
+                }
+                
+                sb.append(c);
+            }
         }
         
-        if (result.length() > 15) {
-            result = result.substring(0, 15);
-            result = result.replaceAll("\\.$", "");
+        if (sb.length() > 0 && sb.charAt(0) == '.') {
+            sb.deleteCharAt(0);
         }
         
-        while (result.length() < 3) {
-            result += result.charAt(result.length() - 1);
+        if (sb.length() > 0 && sb.charAt(sb.length() - 1) == '.') {
+            sb.deleteCharAt(sb.length() - 1);
         }
         
-        return result;
+        if (sb.length() == 0) {
+            sb.append("a");
+        }
+        
+        if (sb.length() > 15) {
+            sb.delete(15, sb.length());
+            
+            if (sb.charAt(sb.length() - 1) == '.') {
+                sb.deleteCharAt(sb.length() - 1);
+            }
+        }
+        
+        while (sb.length() <= 2) {
+            sb.append(sb.charAt(sb.length() - 1));
+        }
+        
+        return sb.toString();
     }
 }
