@@ -3,20 +3,18 @@ import java.util.*;
 public class Solution {
     public int[] solution(int []arr) {
         
-        List<Integer> list = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<>();
         
-        int lastNum = -1;
-        
-        for (int num : arr) {
-            if (num != lastNum) {
-                list.add(num);
-                lastNum = num;
+        for (int i = 0; i < arr.length; i++) {
+            if (numbers.size() == 0 || arr[i] != arr[i - 1]) {
+                numbers.add(arr[i]);
             }
         }
         
-        int[] answer = new int[list.size()];
-        for (int i = 0; i < list.size(); i++) {
-            answer[i] = list.get(i);
+        int[] answer = new int[numbers.size()];
+        
+        for (int i = 0; i < numbers.size(); i++) {
+            answer[i] = numbers.get(i);
         }
         
         return answer;
