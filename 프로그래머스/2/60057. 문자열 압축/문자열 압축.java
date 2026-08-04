@@ -12,14 +12,12 @@ class Solution {
             for (int i = unit; i < s.length(); i += unit) {
                 
                 int end = Math.min(i + unit, s.length());
-            
                 String current = s.substring(i, end);
     
                 if (current.equals(prev)) {
                     count++;
                 } else {
                     sb.append(count > 1? count + prev: prev);
-                
                     prev = current;
                     count = 1;
                 }
