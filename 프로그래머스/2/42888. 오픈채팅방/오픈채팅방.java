@@ -3,28 +3,36 @@ import java.util.*;
 class Solution {
     public String[] solution(String[] record) {
         
-        Map<String, String> lastNickName = new HashMap<>();
-        List<String> result = new ArrayList<>();
+        Map<String, String> users = new HashMap<>();
+        List<String> logs = new ArrayList<>();
         
-        for (String entry : record) {
-            String[] tokens = entry.split(" ");
+        
+        for (String log : record) {
+            
+            String[] tokens = log.split(" ");
             
             if (!tokens[0].equals("Leave")) {
-                lastNickName.put(tokens[1], tokens[2]);
+                users.put(tokens[1], tokens[2]);
+            }
+    
+            if (!tokens[0].equals("Change")) {
+                logs.add(tokens[0] + " " + tokens[1]);
             }
         }
         
-        for (String entry : record) {
-            String[] tokens = entry.split(" ");
-            String uid = tokens[1];
+        String[] result = new String[logs.size()];
+        
+        for (int i = 0; i < logs.size(); i++) {
             
-            if (tokens[0].equals("Enter")) {
-                result.add(lastNickName.get(uid) + "님이 들어왔습니다.");
-            } else if (tokens[0].equals("Leave")) {
-                result.add(lastNickName.get(uid) + "님이 나갔습니다.");
+            String[] tokens = logs.get(i).split(" ");
+            
+            if (logs.get(i).startsWith("Enter")) {
+                result[i] = users.get(tokens[1]) + "님이 들어왔습니다.";
+            } else {
+                result[i] = users.get(tokens[1]) + "님이 나갔습니다.";
             }
         }
         
-        return result.toArray(new String[0]);
+        return result;
     }
 }
