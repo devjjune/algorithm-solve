@@ -16,10 +16,10 @@ class Solution {
             reserveSet.add(r);
         }
         
-        for (int r : reserve) {
-            if (lostSet.contains(r)) {
-                lostSet.remove(r);
-                reserveSet.remove(r);
+        for (int l : lost) {
+            if (reserveSet.contains(l)) {
+                lostSet.remove(l);
+                reserveSet.remove(l);
             }
         }
         
